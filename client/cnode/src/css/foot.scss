@@ -1,0 +1,19 @@
+.foot-component{
+    position: fixed;
+    z-index:100;
+    bottom:0;
+    left:0;
+    right:0;
+    .flex-foot{
+        display: flex;
+        height: 80px;
+        background: #e5e5e5;
+        font-size: 24px;
+        .foot{
+            flex:1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
