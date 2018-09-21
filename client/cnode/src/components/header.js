@@ -12,10 +12,12 @@ export default class Index extends Component {
     render() {
         const { title } = this.props;
         return (
-            <div className='header-component'>
-                <div className='header-left'>back</div>
-                <div className='header-content'>{title}</div>
-                <div className='header-right'></div>
+            <div className='header-position'>
+                <div className='header-component'>
+                    <div className='header-left'>back</div>
+                    <div className='header-content'>{title}</div>
+                    <div className='header-right'></div>
+                </div>
             </div>
         )
     }
