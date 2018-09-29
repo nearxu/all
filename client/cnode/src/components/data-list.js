@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { DataListSession } from './data-list-session';
+import  DataListSession  from './data-list-session';
 const LIST_DATA = 'LIST_DATA';
 const LIST_PAGE_POSITION = 'LIST_PAGE_POSITION';
 
@@ -34,7 +34,7 @@ export default class DataListProvider extends React.Component<Props, State> {
         id: window.location.href,
         forceRefresh: false
     }
-    listSession: DataListSession;
+    // listSession: DataListSession;
 
     constructor(props: Props) {
         super(props);
@@ -48,7 +48,7 @@ export default class DataListProvider extends React.Component<Props, State> {
             this.fetch();
         }
     }
-    removeListSession() {
+    removeListSession = () => {
         this.listSession.remove(LIST_DATA);
     }
     recoveryFromSession() {
@@ -85,7 +85,7 @@ export default class DataListProvider extends React.Component<Props, State> {
         return (
             <React.Fragment>
                 {
-                    data.map((item, index) => render(item, index, this.saveData))
+                    data.map((item, index) => render(item, index, this.saveData.bind(this)))
                 }
                 {/* <Pagination
                     hasNext={hasNext}

@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../css/tab.scss';
 import cx from 'classnames';
-import session from './session';
+import session from '../asset/session';
 
-export default class Index extends Component {
+class Tab extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             ids: session.get('TAB_INDEX') || 0
         }
     }
-    static PropTypes = {
+    static propTypes = {
         tabs: PropTypes.array
     }
     componentDidMount() {
@@ -49,3 +49,5 @@ export default class Index extends Component {
         )
     }
 }
+
+export default Tab

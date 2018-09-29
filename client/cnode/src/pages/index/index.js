@@ -5,11 +5,13 @@ import Tab from '../../components/tab';
 import DataList from '../../components/data-list';
 import axios from 'axios';
 
+import withPage from '../../components/withPage';
+
 import List from './list';
 import cx from 'classnames';
 import './index.scss';
 
-export default class Index extends Component {
+class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -61,7 +63,7 @@ export default class Index extends Component {
                                     id={keys + value.id}
                                     ref={list => (this.dataList = list)}
                                     render={(data, index, saveData) => {
-                                        return <List item={data} key={`${index}${value.id}`} />
+                                        return <List item={data} key={`${index}${value.id}`} saveData={saveData}/>
                                     }}
                                 />
                             </div>
@@ -72,3 +74,5 @@ export default class Index extends Component {
         )
     }
 }
+
+export default Index

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../css/foot.scss';
 import { withRouter } from 'react-router-dom';
 
-class Index extends Component {
+class Foot extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,4 +55,4 @@ class Index extends Component {
     }
 }
 
-export default withRouter(Index);
+export default withRouter(Foot);

@@ -6,8 +6,9 @@ import Index from './pages/index';
 import News from './pages/news';
 import Setting from './pages/setting';
 import Me from './pages/me';
+import Detail from './pages/detail';
 
-import Header from './components/header';
+// import Header from './components/header';
 import Foot from './components/foot';
 
 class App extends Component {
@@ -21,11 +22,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Header title='我的首页' />
+          {/* <Header title='我的首页' /> */}
           <Route exact path='/' component={Index} />
           <Route exact path='/news' component={News} />
           <Route exact path='/setting' component={Setting} />
           <Route exact path='/me' component={Me} />
+          <Route exact path='/detail/:id' component={Detail} />
           <Foot foots={foots} />
         </div>
       </Router>

@@ -1,7 +1,7 @@
 
-import session from './session';
+import session from '../asset/session';
 
-export class DataListSession {
+export default class DataListSession {
     id: string;
     constructor(id: string) {
         this.id = id;
