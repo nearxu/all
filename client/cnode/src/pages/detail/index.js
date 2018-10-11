@@ -29,13 +29,9 @@ class Index extends Component {
         let {data} = this.state;
         console.log(data,'data')
         if(!data) return <div />
-        let content;
-        if(typeof data.content === 'string') {
-            content = JSON.parse(data.content)
-        }
         return (
             <div style={{"marginTop":"100px"}}>
-                <div>{content}</div>
+                <div>{data.content}</div>
             </div>
         )
     }

@@ -1,59 +1,31 @@
 var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var mongoose = require('mongoose');
+import db from './mongodb/db.js'
+import session from 'express-session';
+import connectMongo from 'connect-mongo';
 
-var jwt = require('jsonwebtoken');//用来创建和确认用户信息摘要
+const MongoStore = connectMongo(session);
+
+var app = express();
+import router from './app/routes/index.js';
+
 var config = require('./config'); //读取配置文件config.js信息
 
 //一些配置
 var port = process.env.PORT || 8080; // 设置启动端口
-mongoose.connect(config.database); // 连接数据库
-mongoose.Promise = global.Promise;
 
-const db = mongoose.connection;
-db.once("open", () => {
-    console.log("连接数据库成功");
+app.all('*', (req, res, next) => {
+	res.header("Access-Control-Allow-Origin", req.headers.Origin || req.headers.origin || 'https://cangdu.org');
+	res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
+	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+  	res.header("Access-Control-Allow-Credentials", true); //可以带cookies
+	res.header("X-Powered-By", '3.2.1')
+	if (req.method == 'OPTIONS') {
+	  	res.send(200);
+	} else {
+	    next();
+	}
 });
-
-db.on("error", function (error) {
-    console.error("Error in MongoDb connection: " + error);
-    mongoose.disconnect();
-});
-
-db.on("close", function () {
-    console.log("数据库断开，重新连接数据库");
-    mongoose.connect(config.url, { server: { auto_reconnect: true } });
-});
-
-app.set('superSecret', config.secret); // 设置app 的超级密码--用来生成摘要的密码
-
-//用body parser 来解析post和url信息中的参数
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// 使用 morgan 将请求日志打印到控制台
-app.use(morgan('dev'));
-
-app.get('/', function (req, res) {
-    res.send("这里是nodejs+mongodb编写restfulAPI的笔记！");
-})
-
-const setRoute = require('./app/routes/setup')
-app.use('/setup', setRoute);
-
-// login
-const userRoute = require('./app/routes/user')
-app.use('/login', userRoute);
-
-//category
-var categoryRoute = require('./app/routes/category');// 导入路由文件
-app.use('/category', categoryRoute);   //设置访问路径
-
-//blog
-const blogRoute = require('./app/routes/blog')
-app.use('/blog', blogRoute);
+router(app)
 
 app.listen(port)
 

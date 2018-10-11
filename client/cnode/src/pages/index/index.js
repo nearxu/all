@@ -6,6 +6,7 @@ import DataList from '../../components/data-list';
 import axios from 'axios';
 
 import withPage from '../../components/withPage';
+import withHeader from '../../components/header';
 
 import List from './list';
 import cx from 'classnames';
