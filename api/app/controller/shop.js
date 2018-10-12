@@ -62,7 +62,7 @@ class Shop extends BaseComponent{
         form.parse(req, async (err, fields, files) => {
             try{
                 const {restaurant_id} = fields;
-                console.log(restaurant_id)
+                console.log(restaurant_id,'id')
                 const restaurant = await ShopModel.findOne({id:restaurant_id});
                 if(restaurant){
                     res.send({

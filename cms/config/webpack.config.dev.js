@@ -9,7 +9,11 @@ const eslintFormatter = require("react-dev-utils/eslintFormatter");
 const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
 const getClientEnvironment = require("./env");
 const paths = require("./paths");
+const WebpackDevServer = require('webpack-dev-server');
+const host = process.env.HOST || "0.0.0.0";
 
+
+console.log(host,'host')
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = "/";

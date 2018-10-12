@@ -4,54 +4,34 @@ const menuList = [
     key: "/home"
   },
   {
-    title: "UI",
-    key: "/ui",
+    title: "店铺详情",
+    key: "/shop",
     children: [
       {
-        title: "按钮",
-        key: "/ui/buttons"
+        title: "店铺列表",
+        key: "/shop/shopList"
       },
       {
-        title: "弹框",
-        key: "/ui/modals"
-      },
-      {
-        title: "Loading",
-        key: "/ui/loadings"
-      },
-      {
-        title: "通知提醒",
-        key: "/ui/notification"
-      },
-      {
-        title: "全局Message",
-        key: "/ui/messages"
-      },
-      {
-        title: "Tab页签",
-        key: "/ui/tabs"
-      },
-      {
-        title: "图片画廊",
-        key: "/ui/gallery"
-      },
-      {
-        title: "轮播图",
-        key: "/ui/carousel"
+        title: "商品列表",
+        key: "/shop/foodList"
       }
     ]
   },
   {
-    title: "表单",
-    key: "/form",
+    title: "管理员信息",
+    key: "/admin",
     children: [
       {
         title: "登录",
-        key: "/form/login"
+        key: "/admin/login"
       },
       {
         title: "注册",
-        key: "/form/reg"
+        key: "/admin/register"
+      },
+      {
+        title: "管理员列表",
+        key: "/admin/userlist"
       }
     ]
   },

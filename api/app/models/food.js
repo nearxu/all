@@ -12,15 +12,15 @@ const foodSchema = new Schema({
 
 foodSchema.index({item_id: 1});
 
-const menuSchema = new Schema({
-    name: {type: String, isRequired: true},
-	id:  {type: Number, isRequired: true},
-    restaurant_id: {type: Number, isRequired: true},
-    foods: [foodSchema]
-})
-menuSchema.index({ id: 1 });
+// const menuSchema = new Schema({
+//     name: {type: String, isRequired: true},
+// 	id:  {type: Number, isRequired: true},
+//     restaurant_id: {type: Number, isRequired: true},
+//     foods: [foodSchema]
+// })
+// menuSchema.index({ id: 1 });
 
 const Food = mongoose.model('Food', foodSchema);
-const Menu = mongoose.model('Menu', menuSchema);
+// const Menu = mongoose.model('Menu', menuSchema);
 
-export default {Food,Menu}
+export default Food

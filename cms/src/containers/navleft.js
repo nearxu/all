@@ -41,7 +41,7 @@ class NavLeft extends Component {
         <NavLink to="/home" onClick={this.homeHandleClick}>
           <div className="logo">
             <img src="/assets/logo-ant.svg" alt="" />
-            <h1>Imooc MS</h1>
+            <h1 style={{ color: "#fff" }}>node cms</h1>
           </div>
         </NavLink>
         <Menu onClick={this.handleClick} theme="dark" mode={this.state.mode}>

@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 import config from '../config.js';
 
-mongoose.connect(config.database); // 连接数据库
+mongoose.connect(config.database, { useNewUrlParser: true }); // 连接数据库
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
