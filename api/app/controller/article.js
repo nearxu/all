@@ -2,43 +2,62 @@ import Express from 'express'
 
 import ArticleModel from '../models/article'
 import BaseComponent from '../../prototype/baseComponent'
-import { responseClient } from '../utils'
-
-// import formidable from 'formidable'
+import formidable from 'formidable'
+// import { responseClient } from '../utils'
 
 class Article extends BaseComponent {
   constructor() {
     super()
     this.addArticle = this.addArticle.bind(this)
   }
-  async addArticle(req, res, next) {
-    console.log(req, 'req222222222')
-    const { title, content, tags } = req.body
-    const time = new Date()
-    // const author = req.session.userInfo.username
-    // const coverImg = `/${Math.round(Math.random() * 9 + 1)}.jpg`
-    const viewCount = 0
-    const commentCount = 0
-    let tempArticle = new ArticleModel({
-      title,
-      content,
-      // isPublish,
-      viewCount,
-      commentCount,
-      time,
-      // author,
-      // coverImg,
-      tags: tags.split(',')
+  async addArticle(req, res) {
+    // const { title, content } = req.body
+    // const time = new Date()
+    // const viewCount = 0
+    // const commentCount = 0
+    // let tempArticle = new ArticleModel({
+    //   title,
+    //   content,
+    //   viewCount,
+    //   commentCount,
+    //   time
+    // })
+    // tempArticle
+    //   .save()
+    //   .then(data => {
+    //     console.log(data, 'data')
+    //     // responseClient(res, 200, 0, '保存成功', data)
+    //   })
+    //   .cancel(err => {
+    //     console.log(err)
+    //     // responseClient(res)
+    //   })
+
+    const form = new formidable.IncomingForm()
+
+    form.parse(req, async (err, fields, files) => {
+      try {
+        const tempArticle = {
+          title: fields.title,
+          content: fields.content,
+          viewCount: viewCount,
+          commentCount: commentCount,
+          time
+        }
+        const shop = new ArticleModel(tempArticle)
+        await shop.save()
+        res.send({
+          status: 1,
+          success: '添加成功',
+          data: tempArticle
+        })
+      } catch (err) {
+        res.send({
+          status: 0,
+          message: '服务器繁忙'
+        })
+      }
     })
-    tempArticle
-      .save()
-      .then(data => {
-        responseClient(res, 200, 0, '保存成功', data)
-      })
-      .cancel(err => {
-        console.log(err)
-        responseClient(res)
-      })
   }
 
   async getList(req, res) {

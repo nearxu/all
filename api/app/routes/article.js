@@ -4,7 +4,7 @@ import Article from '../controller/article'
 
 const router = express.Router()
 
-router.post('/addarticle', Article.addArticle)
+router.post('/addArticle', Article.addArticle)
 router.get('/getList', Article.getList)
 
 export default router

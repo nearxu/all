@@ -32,13 +32,18 @@ class Article extends Component {
 
   publishArticle() {
     const { title, content } = this.state
+    const time = new Date()
+    const viewCount = 0
+    const commentCount = 0
     const params = {
       title,
       content,
-      tags: '1,2'
+      time,
+      viewCount,
+      commentCount
     }
     http
-      .post('/api/article/addarticle', params)
+      .post('/api/article/addArticle', params)
       .then(res => {
         this.setState({ data: res.data.data })
       })
