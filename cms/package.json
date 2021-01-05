@@ -5,7 +5,7 @@
   "dependencies": {
     "antd": "^3.6.6",
     "autoprefixer": "7.1.6",
-    "axios": "^0.15.3",
+    "axios": "^0.21.1",
     "axios-mock-adapter": "^1.7.1",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -105,7 +105,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.21.1",
     "babel-plugin-import": "^1.9.1",
     "node-sass": "^4.9.2",
     "react-redux": "^5.0.7",
