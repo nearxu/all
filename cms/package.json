@@ -44,7 +44,7 @@
     "rc-bmap": "^0.1.1",
     "react": "^16.4.1",
     "react-addons-test-utils": "^15.6.0",
-    "react-dev-utils": "^5.0.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.4.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
